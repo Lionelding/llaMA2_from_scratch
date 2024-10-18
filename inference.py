@@ -1,12 +1,14 @@
-from typing import Optional
-import torch
+import json
 import time
 from pathlib import Path
-import json
+from typing import Optional
+
+import torch
 from sentencepiece import SentencePieceProcessor
 from tqdm import tqdm
 
 from model import ModelArgs, Transformer
+
 
 class LLaMA:
 
@@ -153,8 +155,8 @@ if __name__ == '__main__':
     ]
 
     model = LLaMA.build(
-        checkpoints_dir='/lambdafs/code/liqiangd/playground/llama/llama-2-7b',
-        tokenizer_path='/lambdafs/code/liqiangd/playground/llama/tokenizer.model', 
+        checkpoints_dir='/home/liqiang/.llama/checkpoints/Llama-2-7b',
+        tokenizer_path='/home/liqiang/.llama/checkpoints/Llama-2-7b/tokenizer.model', 
         load_model=True,
         max_seq_len=1024,
         max_batch_size=len(prompts),
