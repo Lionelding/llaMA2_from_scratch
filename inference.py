@@ -1,14 +1,12 @@
-import json
+from typing import Optional
+import torch
 import time
 from pathlib import Path
-from typing import Optional
-
-import torch
+import json
 from sentencepiece import SentencePieceProcessor
 from tqdm import tqdm
 
 from model import ModelArgs, Transformer
-
 
 class LLaMA:
 
@@ -134,7 +132,7 @@ class LLaMA:
 if __name__ == '__main__':
     torch.manual_seed(0)
 
-    allow_cuda = False
+    allow_cuda = True
     device = 'cuda' if torch.cuda.is_available() and allow_cuda else 'cpu'
 
     prompts = [
@@ -149,7 +147,7 @@ if __name__ == '__main__':
         cheese =>""",
         # Zero shot prompt
         """Tell me if the following person is actually Doraemon disguised as human:
-        Name: Umar Jamil
+        Name: Lionel Ding
         Decision: 
         """
     ]
